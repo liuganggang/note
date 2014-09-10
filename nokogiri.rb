@@ -1,0 +1,1 @@
+news_links = page.css("a").select{|link| link['data-category'] == "news"}

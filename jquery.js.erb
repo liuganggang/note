@@ -1,0 +1,612 @@
+// DOM-Jquery转换
+	var $cr = $('#cr');
+	var cr = $cr.get(0); or $cr[0]
+
+	$cr.click(function(){
+		if (cr.checked) {
+			alert("check_box is checked!");
+		};
+	});
+	// if ($('#cr').is(":checked"))
+
+	$('#cr').is(":checked")? '男' : '女'
+
+// Jquery Methods
+	$('.tt').css("color","red");
+
+	if ($('.tt').length > 0) {
+		// do something
+	};
+
+// Jquery选择器
+
+	//选择 body内的所有div元素.
+	  $('body div').css("background","#bbffaa");
+	//在body内的选择 元素名是div 的子元素.
+	  $('body > div').css();
+	//选择 所有class为one 的下一个div元素.
+	  $('.one + div').css();
+	  // $('.one').next('div').css();
+
+	//选择 id为two的元素后面的所有div兄弟元素.
+	  $('#two ~ div').css();
+	  // $('#two').nextAll('div').css()
+
+	//选择 id为two的元素的所有div兄弟元素.(无论前后)
+	  $('#two').siblings('div').css();
+
+	//选择第一个div元素.
+	  $('div:first').css();
+	//选择最后一个div元素.
+	  $('div:last').css();
+	//选择class不为one的 所有div元素.
+	  $('div:not(.one)').css();
+	//选择 索引值为偶数 的div元素。
+	  $('div:even').css();
+	//选择 索引值为奇数 的div元素。
+	  $('div:odd').css();
+	//选择 索引等于 3 的元素
+	  $('div:eq(3)').css();
+	//选择 索引大于 3 的元素
+	  $('div:gt(3)').css();
+	//选择 索引小于 3 的元素
+	  $('div:lt(3)').css();
+	//选择 所有的标题元素.比如h1, h2, h3等等...
+	  $(':header').css();
+	//选择 当前正在执行动画的所有元素.
+	  $(':animated').css();
+
+	//选取含有文本"di"的div元素.
+	  $('div:contains(di)').css();
+	//选取不包含子元素(或者文本元素)的div空元素.
+	  $('div:empty').css();
+	//选取含有class为mini元素 的div元素.
+	  $('div:has(.mini)').css();
+	//选取含有子元素(或者文本元素)的div元素.
+	  $('div:parent').css();
+
+	//选取所有不可见的元素.包括<input type="hidden"/>.
+	  alert( "不可见的元素有："+$('body :hidden').length +"个!\n"+
+	   "其中不可见的div元素有:"+$('div:hidden').length+"个!\n"+
+	   "其中文本隐藏域有:"+$('input:hidden').length+"个!");
+	  $('div:hidden').show(3000).css("background","#bbffaa");
+	})
+	//选取所有可见的元素.
+	  $('div:visible').css();
+
+	//选取含有 属性title 的div元素.
+	  $('div[title]').css()
+	//选取 属性title值等于 test 的div元素.
+	  $('div[title=test]').css();
+	//选取 属性title值不等于 test 的div元素.
+	  $('div[title!=test]').css();
+	//选取 属性title值 以 te 开始 的div元素.
+	  $('div[title^=te]').css();
+	//选取 属性title值 以 est 结束 的div元素.
+	  $("div[title$=est]").css();
+	//选取 属性title值 含有 es  的div元素.
+	  $("div[title*=es]").css();
+	//组合属性选择器,首先选取有属性id的div元素，然后在结果中 选取属性title值 含有 es 的元素.
+	  $("div[id][title*=es]").css();
+
+	//选取每个父元素下的第2个子元素
+	  $('div.one :nth-child(2)').css();
+	//选取每个父元素下的第一个子元素
+	  $('div.one :first-child').css();
+	//选取每个父元素下的最后一个子元素
+	  $('div.one :last-child').css();
+	//如果父元素下的仅仅只有一个子元素，那么选中这个子元素
+	  $('div.one :only-child').css();
+
+//筛选出与指定表达式匹配的元素集合
+	$("ul li").filter(":contains('索尼'),:contains('松下'),:contains('爱国者')")
+
+	toggle(function(){
+		// do something
+	},function(){
+		// do something
+	});
+
+// 插入节点
+	<p>hello!</p>
+
+	$('p').append("<p>world</p>") == $("<p>world</p>").appendTo('p')
+	// <p>hello!world</p>
+	$('p').prepend("<p>world</p>") == $("<p>world</p>").prependTo('p')
+	// <p>worldhello!</p>
+	$('p').after("<p>world</p>") == $("<p>world</p>").insertAfter("p")
+	// <p>hello!</p><p>world</p>
+	$('p').before("<p>world</p>") == $("<p>world</p>").insertBefore("p")
+	// <p>world</p><p>hello!</p>
+	$("ul li").remove("li[title!=菠萝]");  //把<li>元素中属性title不等于"菠萝"的<li>元素删除
+
+	$("ul li:eq(1)").empty(); // 找到第二个<li>元素节点后，清空此元素里的 !内容!
+
+	$(function(){
+	 $("ul li").click(function(){
+	     $(this).clone(true).appendTo("ul"); // 注意参数true
+	     //可以复制自己，并且他的副本也有同样功能。
+	 })
+	});
+
+	$("p").replaceWith("<strong>你最不喜欢的水果是?</strong>");
+		 // 同样的实现： $("<strong>你最不喜欢的水果是?</strong>").replaceAll("p");
+
+	$("strong").wrap("<b></b>");//用<b>元素把<strong>元素包裹起来
+	$("strong").wrapAll("<b></b>");//用<b>元素把all <strong>元素包裹起来together
+	$("strong").wrapInner("<b></b>");
+
+	//重复切换样式
+		$("p").toggleClass("another");
+	 //判断元素是否含有某样式
+		$("p").hasClass("another")  //return true or false.
+		$("p").is(".another") //return true or false.
+
+	// mouseover mouseout
+		$('p').mouseover(function(){
+			// do something
+		}).mouseout(function(){
+			// do something
+		}).mousemove(function(){
+			// do
+		});
+
+// Jquery Ajax
+	// $.load()
+	$("#send").click(function(){
+		$("#resText").load("<%= new_user_path %> .para");
+	});
+
+	$.get("<%= users_test_path %>",{
+		username : $("#username").val(),
+		content : encodeURI($("#content").val())
+	},function (data, textStatus){
+		$("#resText").html("data");
+	});
+
+	$.getScript('test.js')
+	$.getJSON('test.json')
+
+	// $.ajax
+	$.ajax({
+	  type: "GET",
+	  url: "test.js",
+	  dataType: "script",
+	  global: false  // 不触发全局AJAX事件 如 ajaxStart
+	});
+
+	// $.param
+	$(function(){
+	  	var obj={a:1,b:2,c:3};
+		var  k  = $.param(obj);
+		alert(k)        // 输出  a=1&b=2&c=3
+	})
+
+	//共用这2个全局的ajax事件
+
+	<div id="loading">加载中...</div>
+
+	   $("#loading").ajaxStart(function(){
+	      $(this).show();
+	   });
+	   $("#loading").ajaxStop(function(){
+	      $(this).hide();
+	   });
+
+
+	// bind hover
+	$('p').bind("mouseover",function(){
+		// do
+	})
+
+	$('p').bind("mouseout",function(){
+		// do
+	})
+
+	$('p').hover(function(){
+		// show()
+	},function(){
+		// hide()
+	})
+
+	event.stopPropagation();    //  阻止事件冒泡 == return false;
+
+	$('p').bind("click", fun1 = function(event){
+		// do
+	})
+
+	$('p').one("click", fun2 = function(even){
+		// do ones
+	})
+
+	$(function(){
+	   $('#btn').bind("myClick", function (event,msg1,msg2){
+					 $('#test').append("<p>我的自定义事件.</p>");
+			  });
+	   $('#btn').click(function(){
+			$(this).trigger("myClick",["msger1","msger2"]);
+	   }).trigger("myClick",["tag1","tag2"]);
+	})
+
+	$('input').triggerHandler("focus");
+
+	$("div").bind("mouseover mouseout", function(){
+        $(this).toggleClass("over");
+     });
+
+	// 根据命名空间，删除事件
+	$("div").bind("click.plugin",function(){
+	       $("body").append("<p>click事件</p>");
+	});
+	$("div").bind("mouseover.plugin", function(){
+	       $("body").append("<p>mouseover事件</p>");
+	});
+	$("div").bind("dblclick", function(){
+		   $("body").append("<p>dblclick事件</p>");
+	});
+	$("button").click(function() {
+		$("div").unbind(".plugin");
+	})
+
+	$("div").bind("click",function(){
+	       $("body").append("<p>click事件</p>");
+	});
+	$("div").bind("click.plugin", function(){
+	       $("body").append("<p>click.plugin事件</p>");
+	});
+	$("button").click(function() {
+		  $("div").trigger("click!");    // 注意click后面的感叹号
+	});
+
+	$('div').fadeIn().fadeOut()
+	$('div').slideUp().slideDown()
+
+	$("#panel").click(function(){
+	   $(this).animate({left: "+=100px"}, 3000)
+	   		  .animate({height: "+=100px"},3000,function(){
+	   		  	$(this).css("background","red");
+	   		  });
+	});
+
+	$("button:eq(0)").click(function () {
+		  $("#panel")
+			.animate({height : "150" } , 1000 )
+			.animate({width : "300" } , 1000 )
+			.hide(2000)
+			.animate({height : "show" , width : "show" , opacity : "show" } , 1000 )
+			.animate({height : "500"} , 1000 );
+	  });
+	  $("button:eq(1)").click(function () {
+		  $("#panel").stop();//停止当前动画，继续下一个动画
+	  });
+	  $("button:eq(2)").click(function () {
+		  $("#panel").stop(true);//清除元素的所有动画
+	  });
+	  $("button:eq(3)").click(function () {
+		  $("#panel").stop(false,true);//让当前动画直接到达末状态 ，继续下一个动画
+	  });
+	  $("button:eq(4)").click(function () {
+		  $("#panel").stop(true,true);//清除元素的所有动画，让当前动画直接到达末状态
+	  });
+
+
+
+
+
+// Checking the type of an arbitrary value.
+
+var myValue = [ 1, 2, 3 ];
+
+typeof myValue; // "object"
+
+// Using JavaScript's typeof operator to test for primitive types:
+typeof myValue === "string"; // false
+typeof myValue === "number"; // false
+typeof myValue === "undefined"; // false
+typeof myValue === "boolean"; // false
+
+// Using strict equality operator to check for null:
+myValue === null; // false
+
+// Using jQuery's methods to check for non-primitive types:
+jQuery.isFunction( myValue ); // false
+jQuery.isPlainObject( myValue ); // false
+jQuery.isArray( myValue ); // true
+
+
+var stuffToDo = {
+
+    "bar": function() {
+        alert( "the value was bar -- yay!" );
+    },
+
+    "baz": function() {
+        alert( "boo baz :(" );
+    },
+
+    "default": function() {
+        alert( "everything else is just ok" );
+    }
+
+};
+
+if ( stuffToDo[ foo ] ) {
+
+    stuffToDo[ foo ]();
+
+} else {
+
+    stuffToDo[ "default" ]();
+
+}
+
+var myArray = [ 0, 7, 8, 5 ];
+myArray.splice( 1, 2, 1, 2, 3, 4 );
+
+console.log( myArray ); // [ 0, 1, 2, 3, 4, 5 ]
+
+// Creating an object literal.
+
+var myObject = {
+    sayHello: function() {
+        console.log( "hello" );
+    },
+    myName: "Rebecca"
+};
+
+myObject.sayHello(); // "hello"
+
+console.log( myObject.myName ); // "Rebecca"
+
+
+var greeting = function(e,i) {
+	if ((typeof e !== 'undefined')) {
+		alert(e + "," + i )
+	};
+}
+
+if ( myArray.push && myArray.slice && myArray.join ) {
+    // probably an array (this is called "duck typing")
+}
+
+var myObject = {
+    sayHello: function() {
+        console.log( "Hi! My name is " + this.myName );
+    },
+    myName: "Rebecca"
+};
+
+var secondObject = {
+    myName: "Colin"
+};
+
+myObject.sayHello();                    // "Hi! My name is Rebecca"
+myObject.sayHello.call( secondObject ); // "Hi! My name is Colin"
+
+$( "a.external:first" );
+$( "tr:odd" );
+
+// Select all input-like elements in a form (more on this below).
+$( "#myForm :input" );
+$( "div:visible" );
+
+// All except the first three divs.
+$( "div:gt(2)" );
+
+// All currently animated divs.
+$( "div:animated" );
+
+// Find all <a> elements whose rel attribute ends with "thinger".
+$( "a[rel$='thinger']" );
+
+// Refining selections.
+$( "div.foo" ).has( "p" );         // div.foo elements that contain <p> tags
+$( "h1" ).not( ".bar" );           // h1 elements that don't have a class of bar
+$( "ul li" ).filter( ".current" ); // unordered list items with class of current
+$( "ul li" ).first();              // just the first unordered list item
+$( "ul li" ).eq( 5 );
+
+// Selects all radio buttons with the name attribute of gender.
+$( "form input[name='gender']:radio" );
+
+$( "#content" )
+    .find( "h3" )
+    .eq( 2 )
+        .html( "new text for the third h3!" )
+        .end() // Restores the selection to all h3s in #content
+    .eq( 0 )
+        .html( "new text for the first h3!" );
+
+// Making a copy of an element.
+
+// Copy the first list item to the end of the list:
+$( "#myList li:first" ).clone().appendTo( "#myList" );
+
+.remove()
+.detach() //restore the selection to the page at a later time
+.empty() //If you want to leave the element on the page but remove its contents
+
+$( "<li class=\"new\">new list item</li>" );
+
+$( "<a/>", {
+    html: "This is a <strong>new</strong> link",
+    "class": "new",
+    href: "foo.html"
+});
+
+// Getting a new element on to the page.
+
+var $myNewElement = $( "<p>New element</p>" );
+
+$myNewElement.appendTo( "#content" );
+
+$myNewElement.insertAfter( "ul:last" ); // This will remove the p from #content!
+
+$( "ul" ).last().after( $myNewElement.clone() );
+
+var myItems = [];
+var $myList = $( "#myList" );
+
+for ( var i = 0; i < 100; i++ ) {
+    myItems.push( "<li>item " + i + "</li>" );
+}
+
+$myList.append( myItems.join( "" ) );
+
+var newElement = document.createElement( "div" );
+
+// Selecting all <h1> tags.
+
+var headings = $( "h1" );
+
+var firstHeading = headings.eq( 0 );
+
+var firstHeadingElem = $( "h1" ).get( 0 );
+
+var firstHeadingElem = $( "h1" )[ 0 ];
+
+// Working with classes.
+
+var $h1 = $( "h1" );
+
+$h1.addClass( "big" );
+$h1.removeClass( "big" );
+$h1.toggleClass( "big" );
+
+if ( $h1.hasClass( "big" ) ) {
+    ...
+}
+
+$.trim( "    lots of extra whitespace    " );
+
+$.each([ "foo", "bar", "baz" ], function( idx, val ) {
+    console.log( "element " + idx + " is " + val );
+});
+
+$.each({ foo: "bar", baz: "bim" }, function( k, v ) {
+    console.log( k + " : " + v );
+});
+
+
+var myArray = [ 1, 2, 3, 5 ];
+
+if ( $.inArray( 4, myArray ) !== -1 ) {
+    console.log( "found it!" );
+}
+
+var sum = 0;
+
+var arr = [ 1, 2, 3, 4, 5 ];
+
+$.each( arr, function(index,v){
+	sum += v
+})
+alert(sum)
+
+$( "li" ).each( function( index, element ){
+    console.log( $( this ).text() );
+});
+
+// Logs the following:
+// Link 1
+// Link 2
+// Link 3
+
+console.log( "Index: " + $foo.index( "li" ) ); // 0
+
+
+$( "div" ).click(function() {
+
+    if ( $( this ).hasClass( "protected" ) ) {
+
+        $( this )
+            .animate({ left: -10 })
+            .animate({ left: 10 })
+
+    }
+
+});
+
+if ( $( "#myDiv" ).is( ":hidden" ) ) {
+
+    $( "#myDiv" ).show();
+
+}
+
+// test whether an element exists?
+if ( $( "#myDiv" ).length ) {
+
+    $( "#myDiv" ).show();
+
+}
+
+
+var isVisible = $( "#myDiv" ).is( ":visible" );
+
+var isHidden = $( "#myDiv" ).is( ":hidden" );
+
+$( "#myDiv:visible" ).animate({
+
+    left: "+=200px"
+
+}, "slow" );
+
+// Disable #x
+$( "#x" ).prop( "disabled", true );
+
+// Enable #x
+$( "#x" ).prop( "disabled", false );
+
+
+$( "#myselect option:selected" ).text();
+// => "Mr"
+
+// The hover helper function
+$( "#menu li" ).hover(function() {
+    $( this ).toggleClass( "hover" );
+});
+
+// Event
+
+// Binding a named function
+function sayHello( event ) {
+    alert( "Hello." );
+}
+
+$( "#helloBtn" ).on( "click", sayHello );
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
