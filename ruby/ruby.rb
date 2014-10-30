@@ -143,6 +143,9 @@ end
 user.name == user.send(:name) == user.send("name") # send方法会发送所有方法 包括private和protected
 user.public_send("name")
 
+@destination.reload.attributes = params[:destination].reject do |attrb, value|
+   attrb.to_sym == :lock_version
+end
 
 
 

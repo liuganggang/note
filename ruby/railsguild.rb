@@ -122,6 +122,7 @@ validates :mouse, :presence => true,
   Client.sum(:age)
 
   Rack::Utils.parse_query "name=fred&phone=0123456789"
+  Rack::Utils.escape_html '<p>asdfasdf</p>'   #=> "&lt;p&gt;asdfasdf&lt;&#x2F;p&gt;"
 
 #routing
   #如果你想要把路由 /posts (不以 /admin 作前缀) 匹配到 Admin::PostsController
