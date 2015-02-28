@@ -1,12 +1,16 @@
 "Rick".index("c")
 42.even?
-num = -1234 # => -1234
-positive = num.abs # => 1234
-histogram = Hash.new(0) # The default value is zero
 
-line.sub(/Perl/, 'Ruby') # replace first 'Perl' with 'Ruby'
-line.gsub(/Python/, 'Ruby') # replace every 'Python' with 'Ruby'
-line.gsub(/Perl|Python/, 'Ruby')
+# fixnum
+0  #八进制
+0d #十进制
+0x #十六进制
+0b #二进制
+
+'ruby' =~ %r{ub}
+$&   #=> 'ub'
+$`   #=> 'r'
+$'   #=> 'y'
 
 def who_says_what
  yield("Dave", "hello")
@@ -31,10 +35,6 @@ aray[1...3] 不包括3
 array = [ 1, 2, 3, 4, 5, 6, 7 ]
 p array.first(4)
 p array.last(4)
-
-# A delimited string split on | returns everything surrounding the | delimiters
-"a|delimited|string".split("|")
-# Prints: ["a", "delimited", "string"]
 
 # The same string scanninng for | only returns the matched |
 "a|delimited|string".scan("|")

@@ -103,8 +103,4 @@ select (select username from users where id = user_id), SUM(total_price) as sum_
 
     alter database DATABASE_NAME charset=utf8;
 
-    mysql使用source命令导入数据库编码问题
-    mysql>use 数据库名称（与你的网站数据库名相同）
-
     set names utf8; （先确认编码 注意不是UTF-8）
-    source D:\123.sql （要导入的数据库名称）

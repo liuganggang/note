@@ -1,84 +1,76 @@
 #常用命令
-	cp -a file new_file
-	cp -i file new_file
-
-	rm -i /tmp/*.log
-
-	touch ./-file
-
   tar -czvf emall.tar.gz emall.sql
   tar -xzvf emall.tar.gz
 
 	basename work/meyer.zip        return meyer.zip
 	dirname work/meyer.zip           return work
 
-	head -n 30 production.log
-	tail -n 30 production.log
-	tail -n +100 production.log
-
 	ls -l --time=atime production.log
-
-	umask 022
 
 	chattr -i file
 	chattr -a file
 
-	order_items = OrderItem.includes(:order).where("order_items.product_id = 105 AND orders.state >= 1 AND (order_items.created_at between '2013-05-20 00:00:00' AND '2013-05-31 23:59:59')")
-  order_ids = order_items.map(&:order_id).uniq
-  user_ids= Order.where(id: order_ids).map(&:user_id).uniq
-  users = User.where(id: user_ids).where("user_source != 'nippon_member' or user_source is null").map(&:id).uniq
-  counts = OrderItem.includes(:order).where("order_items.product_id = 105 AND orders.state >= 1 AND (order_items.created_at between '2013-05-20 00:00:00' AND '2013-05-31 23:59:59')").where("orders.user_id in (?)", users).sum(:quantity)
-
-1.rvmsudo god quit; 2kill all resques; 3 rvmsudo god 4 load all resques
-
 # tmux
+  tmux list-sessions
 
- tmux list-sessions
+  tmux new-session -s rails
 
- tmux new-session -s rails
+  tmux a -t rails 恢复rails窗口
 
- tmux a -t rails 恢复rails窗口
+  tmux kill-session -t rails 杀死rails 窗口
 
- tmux kill-session -t rails 杀死rails 窗口
+  tmux kill-server
 
- tmux kill-server
+# useradd
 
+  useradd -u 666 -g zhugroup -G fushugroup1,fushugroup2 -d /home/mydir -s bin/bash newuser
 
- c-b d 退出
+  usermod -u 888 newuser
 
-#mouse:
-  sudo modprobe -r psmouse
+  userdel newuser
+  userdel -r newuser # del account with home dir
 
-  sudo modprobe psmouse proto=imps
+  groupadd group2
 
-#github
+  groupmod -n newgroup group2
+  groupmod -g 999 newgroup
 
-  git log --pretty=oneline
-  git log --patch
-  git blame index.html
+  umask 022  # create new file or new dir default permission,
+             # file is 666 - 022, dir is 777 - 022.
+  chmod u+s newfile  # set suid , running as it's user in thread
+  chmod g+s newdir   # set sgid , use the same group as new create children file
+  chmod o+t newdir   # set sticky, if can write files in dir , then can not delete other people's file when set stiky.
+  chmod 4777 newdir  # suid = 4, sgid = 2, sticky = 1;
 
-  git rebase -i HEAD~4
-  git stash show --patch stash@{2}
+# ifconfig
+  ifconfig -a
+  ifconfig eth0
 
-  git config user.email admin@example.com
-  git config --global alias.comt commit
+  setup
 
-  chmod -R 777 system/ 给system/以及所有于它关联的文件添加所有人可读可写的权限 777 1+2+4意思
+  ifup
+  ifdown
 
-  <%= sprintf("%.2f", @book.price) %>
+  host www.baidu.com
+  dig www.baidu.com
 
-  unzip -O CP936 xxx.zip
+# 重定向
+  # 0  STDIN
+  # 1  STDOUT
+  # 2  STDERR
+  echo "asdf" > outfile
+  echo "adfasdf" >> outfile
+  ls nothing 2> errorfile
+  ls -ld 2>&1 allfileinfo
+  grep linuxcast < /etc/passwd
 
-pstree -a
+  find / -user liugang 2> /dev/null | grep Video
 
-w
-last
-free -m
-
-
-
-
-
+# yum
+  yum install software
+  yum uninstall software
+  yum list (all | installed | recent | updates)
+  yum info packagename
 
 
 
