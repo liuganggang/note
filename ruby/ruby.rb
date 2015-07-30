@@ -226,9 +226,42 @@ alias_method :real_length, :length
 星期五
 
 
+# prepend 只能用于 ruby > 2.0
+# 等价与include
+# 覆盖include之前的所有同名方法
+module Person
+  def self.prepended(base)
+    puts "#{base} is prepended by #{self}"
+  end
 
+  def my_name
+    puts "my_name in person"
+  end
+end
 
+class Userr
+  prepend Person
+  def my_name
+    puts "my_name in user"
+  end
+end
 
+# inherited钩子
+# 继承时触发回调
+class Person
+
+  def self.inherited(child_class)
+    puts "#{child_class} is inherited by #{self}"
+  end
+
+  def say
+    puts 'say hello'
+  end
+end
+
+class Liugang < Person
+
+end
 
 
 

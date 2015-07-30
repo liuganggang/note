@@ -124,6 +124,25 @@ validates :mouse, :presence => true,
   Rack::Utils.parse_query "name=fred&phone=0123456789"
   Rack::Utils.escape_html '<p>asdfasdf</p>'   #=> "&lt;p&gt;asdfasdf&lt;&#x2F;p&gt;"
 
+# transaction
+# 嵌套事务
+User.transaction do
+  User.create(:username => 'Kotori')
+  User.transaction(:requires_new => true) do
+    User.create(:username => 'Nemu')
+    raise ActiveRecord::Rollback
+  end
+end
+
+# 多数据库之间必须嵌套事物
+Client.transaction do
+  Product.transaction do
+    product.buy(@quantity)
+    client.update_attributes!(:sales_count => @sales_count + 1)
+  end
+end
+
+
 #routing
   #如果你想要把路由 /posts (不以 /admin 作前缀) 匹配到 Admin::PostsController
   scope :module => "admin" do

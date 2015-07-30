@@ -1,6 +1,3 @@
-"Rick".index("c")
-42.even?
-
 # fixnum
 0  #八进制
 0d #十进制
@@ -11,6 +8,21 @@
 $&   #=> 'ub'
 $`   #=> 'r'
 $'   #=> 'y'
+
+"12:56am" =~ /(\d\d):(\d\d)(..)/
+$1   #=> "12"   1234 代表括号组
+$2   #=> "56"
+$3   #=> "am"
+
+"12:56am" =~ /((\d\d):(\d\d))(..)/
+$1   #=> "12:56"
+$2   #=> "12"
+$3   #=> "56"
+$4   #=> "am"
+
+"mark john".gsub(/\b\w/) { |w| w.upcase } #=> "Mark John"
+"mark:john".gsub(/(\w+):(\w+)/, '\2, \1')
+
 
 def who_says_what
  yield("Dave", "hello")

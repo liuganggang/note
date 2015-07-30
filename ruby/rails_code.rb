@@ -38,6 +38,10 @@
 #浏览数自动递增
 	Model.increment_counter(:view_count, params[:id]) unless params[:viewed].blank?
 
+# 数组化为sql string ['你好', '我好'] => IN ('你好', '我好')
+sql = ActiveRecord::Base.send(:sanitize_sql_array, ["(?, ?)"]+ workflow_states)
+add_where = "orders.workflow_state in #{sql}"
+
 #参数加密
 URI的使用 require 'URI'
 
@@ -70,3 +74,101 @@ URI的使用 require 'URI'
 areas = Rails.cache.fetch('api_get_areas', expires_in: 1.months) do
   Area.all.as_json(methods: :parent_id, except: [:code,:published,:remark])
 end
+
+
+
+## Rails 4
+
+@article = Article.update(title: 't123123')
+@article = Article.update(article_params)
+article_params = params.require(:article).permit(:title, :content)
+
+User.update_all "age = 3, name = 'liugang'"
+first_user = User.take(2)
+users = User.first(2)
+users = User.last(2)
+
+User.where.not(id: 100)
+User.order(order_num: :desc, created_at: :asc)
+User.order("order_num ASC, created_at DESC")
+
+users = User.select("name").distinct
+users.distinct(false)
+
+users = User.where("id > 10 AND age > 20").order("created_at").except(:order)
+users = User.where("id > 10 AND age > 20").order("created_at").unscope(where: :id)
+users = User.where("id > 10 AND age > 20").order("created_at").unscope(:order)
+users = User.order("created_at").merge(User.unscope(:order))
+
+Post.where('id > 10').limit(20).order('id desc').only(:order, :where)
+Post.where(trans: true).rewhere(trans: false)
+
+User.none
+client = Client.readonly.first
+User.create_with(locked: false).find_or_create_by(name: 'andy')
+User.all.pluck(:id, :email)
+
+Client.average("orders_count")
+Client.maximum("age")
+Client.minimum("age")
+Client.sum("age")
+
+User.where(id: 1).joins(:posts).explain
+
+user.orders(true)
+association(force_reload = false)
+association=(associate)
+build_association(attributes = {})
+create_association(attributes = {})
+create_association!(attributes = {})
+
+belongs_to :order, -> { includes :customer }
+
+has_many :readings
+has_many :posts, -> { distinct }, through: :readings
+
+orders(force_reload = false)
+orders << (object, ...)
+orders.delete(object, ...)
+orders.destroy(object, ...)
+orders = objects
+order_ids
+order_ids = ids
+orders.clear
+orders.empty?
+orders.size
+orders.find(...)
+orders.where(...)
+orders.exists?(...)
+orders.build(attributes = {}, ...)
+orders.create(attributes = {})
+orders.create!(attributes = {})
+
+##CallBacks
+
+before_validation :normalize_name, on: :create
+
+# :on takes an array as well
+after_validation :set_location, on: [ :create, :update ]
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
