@@ -6,8 +6,8 @@ gem install backup 不放到Gemfile中
 
 解决办法:
 in schedule.rb.
-
-job_type :backup, "cd :path && rvm 2.0.0 do bundle exec backup perform -t xinyi"
+# don't use bundle exec
+job_type :backup, "cd :path && rvm 2.0.0 do backup perform -t xinyi"
 
 every :day, :at => '2:00 am' do
   backup ""
