@@ -82,7 +82,7 @@ $ ruby -v
 
 ```
 gem sources                        # 查看gem源
-gem sources -r https://rubygems.org/     # 删除默认的gem源 
+gem sources -r https://rubygems.org/     # 删除默认的gem源
 gem sources -a https://ruby.taobao.org/   # 增加taobao作为gem源
 gem sources   ​​       # 再次查看gem源
 http://ruby.taobao.org                # 查看结果请确保只有 ruby.taobao.org
@@ -135,6 +135,14 @@ passenger_ruby /home/deploy/.rvm/wrappers/default/ruby;
 ```
 
 这会打开 Passenger 支持，并且指定使用之前用 rvm 安装的 ruby 版本。
+
+## gem安装passenger and nginx
+```
+gem install passenger
+rvmsudo passenger-install-nginx-module
+
+```
+
 
 ## 上传商城源代码
 
