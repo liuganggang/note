@@ -27,3 +27,13 @@ crontab -u www -l
 # 查看cron运行日志
 /var/log/syslog
 
+# clockwork
+# 不是用bundle install 的gem 命令 用 Bundler.with_clean_env 来执行
+every(1.days, "backup mysql", :at => '00:10') do
+  Clockwork.wrapper('备份数据库') do
+    Bundler.with_clean_env do
+      system "backup perform -t my_mall"
+    end
+  end
+end
+
