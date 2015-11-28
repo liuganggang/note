@@ -1,9 +1,9 @@
 # Source customer alias file
-if [ -f ~/.bash_alias ]; then
-        source .bash_alias
+if [ -f ~/.bash_aliases ]; then
+    . ~/.bash_aliases
 fi
 
-# in .bash_alias file
+# in .bash_aliases file
 
 alias ttr='touch tmp/restart.txt'
 alias rdm='RAILS_ENV=production bundle exec rake db:migrate'
