@@ -224,7 +224,9 @@ cookies[:user] = {value: @users, expires: Time.now+3600, path: '/', domain: '', 
 cookies.delete(:user)
 
 aa = ["liugang", "nihao", "sdfa", "asdfwqw", "wjsosdfw", "sddf"]
-aa.partition {|x| x.length >5} #=> [["liugang", "asdfwqw", "wjsosdfw"], ["nihao", "sdfa", "sddf"]]
+aa.select {|x| x.length > 5 } # 返回结果真的集合
+aa.reject {|x| x.length > 5 } # 返回结果假的集合
+aa.partition {|x| x.length >5} # 真假结果 分组返回 #=> [["liugang", "asdfwqw", "wjsosdfw"], ["nihao", "sdfa", "sddf"]]
 
 
 
