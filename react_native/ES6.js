@@ -84,10 +84,50 @@ var source2 = {b: 3, c: 4};
 Object.assign(target, source1, source2) // {a: 1, b: 3, c: 4}
 
 
+// 10.1 Symbol
 
+let s = Symbol();
 
+var s1 = Symbol('foo');
+var s2 = Symbol('bar')
 
+s1.toString();
+s2.toString();
+s1 === s2 // false
 
+var sym = Symbol();
+
+Boolean(sym)
+
+if(sym){
+  //...
+}
+
+String(sym);
+
+// 10.2 作为属性名的 symbol
+
+var mySymbol = Symbol();
+var a = {};
+
+var a = {
+  [mySymbol] = 'hello'
+}
+
+var Object.defineProperty(a, mySymbol, {value: 'hello'})
+
+//
+let s = Symbol();
+
+let obj = {
+  [s]: function(args){ }
+};
+
+obj[s](123)
+
+let obj = {
+  [s](args){}
+}
 
 
 
