@@ -129,8 +129,19 @@ let obj = {
   [s](args){}
 }
 
+// 10.5 Symbol.for() Symbol.keyFor()
 
+var s1 = Symbol.for('foo');
+var s2 = Symbol.for('foo');
 
+s1 === s2 // true
+
+//
+var s1 = Symbol.for('foo');
+Symbol.keyFor(s1) // 'foo'
+
+var s2 = Symbol('foo');
+Symbol.keyFor(s2) // undefined
 
 
 
