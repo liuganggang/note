@@ -1,0 +1,1 @@
+Product.find_each {|p| p.cover.recreate_versions! rescue next}

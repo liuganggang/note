@@ -1,5 +1,5 @@
 服务器数据库备份方法
-gem install backup 不放到Gemfile中
+gem install backup --no-ri --no-rdoc 不放到Gemfile中
 
 出现crontab 有任务,但是不执行备份的问题.
 手动 backup perform -t 却有效.
