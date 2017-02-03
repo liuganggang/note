@@ -10,6 +10,11 @@
 	chattr -i file
 	chattr -a file
 
+  sed -n '10,20p' Gemfile
+  sed -n '/ruby/p' Gemfile
+  sed '1,10d' Gemfile
+
+
 # tmux
   tmux list-sessions
 
