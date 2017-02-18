@@ -26,6 +26,8 @@ apache2启动方式
 	env LANG=GBK 7za x -olande "1-r2  1.31.zip"
 	find . -exec convmv -f GBK -t utf8 --notest {} \;
 
+# 解决终端ssh链接服务器不能输入中文办法
+# 终端的环境跟 服务器的环境不一致 会造成不能输入中文. 会出现一些编码问题报错.比如自动部署成功.
 export LANGUAGE=en_US.UTF-8
 export LANG=en_US.UTF-8
 export LC_ALL=en_US.UTF-8
