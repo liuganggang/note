@@ -1,9 +1,12 @@
-#\l
-# 切换数据库
-# \c qatime_dev
-# \dt 查看表
-# \d 查看表结构
-# \di 查看索引
+
+\l
+\c qatime_dev
+\d 查看表结构
+\dt 查看表
+\du
+\di 查看索引
+
+SELECT version();
 
 \c dbname username serverIP port
 
@@ -16,6 +19,8 @@ psql -U liugang -d qatime_dev
 
 # 创建数据库用户 密码
 CREATE USER liugang WITH PASSWORD 'password';
+
+CREATE USER qatime WITH CREATEDB;
 
 # 创建用户数据库，这里为exampledb，并指定所有者为。
 CREATE DATABASE exampledb OWNER liugang;
@@ -65,6 +70,43 @@ DROP TABLE IF EXISTS backup_tbl;
 #备份数据库
 可以使用pg_dump和pg_dumpall来完成。比如备份sales数据库：
 pg_dump sales>/home/tk/pgsql/backup/1.bak
+pg_dump dbname | gzip > filename.gz
+
+#注：pg_dump可以对针对单表或者多表进行备份
+如：pg_dump databasename –t tablename1 –t tablename2 >filename
+
+
+# 中间表查询使用次数频繁.直接创建view来查询
+# 创建view
+CREATE VIEW myview AS
+    SELECT city, temp_lo, temp_hi, prcp, date, location
+        FROM weather, cities
+        WHERE city = name;
+
+SELECT * FROM myview;
+
+DROP VIEW myview;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

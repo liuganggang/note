@@ -14,6 +14,11 @@
   sed -n '/ruby/p' Gemfile
   sed '1,10d' Gemfile
 
+  Linux压缩保留源文件的方法：
+  gzip –c filename > filename.gz
+  Linux解压缩保留源文件的方法：
+  gunzip –c filename.gz > filename
+
 
 # tmux
   tmux list-sessions
