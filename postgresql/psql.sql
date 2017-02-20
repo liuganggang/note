@@ -75,6 +75,12 @@ pg_dump dbname | gzip > filename.gz
 #注：pg_dump可以对针对单表或者多表进行备份
 如：pg_dump databasename –t tablename1 –t tablename2 >filename
 
+数据库的备份
+pg_dump -U liugang databasename -f /tmp/databasename.sql
+
+数据库的恢复
+psql -U liugang -d databasename -f /tmp/databasename.sql
+
 
 # 中间表查询使用次数频繁.直接创建view来查询
 # 创建view
