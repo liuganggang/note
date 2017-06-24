@@ -217,6 +217,7 @@ File.join('/Users','liugang') #=> "/Users/liugang"
 Dir.chdir('/Users/liugang/work')
 Dir.foreach(Dir.pwd).each {|x| p x}
 list = Dir.entries(Dir.pwd)   #=> [".DS_Store", ".metadata", "aceweb"]
+Dir.glob("#{folder}/**/*.pdf")
 
 
 

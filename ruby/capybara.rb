@@ -60,7 +60,9 @@ page.check('German')
 page.choose('Male')
 
 
+page.current_window.resize_to(1_200, 800)
 
+Capybara::Selenium::Driver.new(app, browser: :chrome, service_log_path: '/tmp/t.log', args: ["--verbose", "--window-size=1920,1080"])
 
 
 
