@@ -7,6 +7,11 @@ Pub::Video.find_each {|x| x.copy_lecturer_poster!}
 # 小米IP
 119.57.108.112
 
+# 首页
+banner GET /tourists/banners
+热门讲师 GET /lecturer_feeds/hot_lecturers
+内容 GET /lecturer_feeds/welcome_v2
+
 # 关注
 讲师 /follow_v21
 直播 POST /lecturer_feeds/follow_lecturer_v1
