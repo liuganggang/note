@@ -20,6 +20,10 @@ banner GET /tourists/banners
 GET /users/collections
 # 我的留言
 GET /users/my_message_new
+# 专属讲师
+GET /orders/my_lecturer_list
+# 投顾报告
+GET /orders/my_invest_product
 
 
 
