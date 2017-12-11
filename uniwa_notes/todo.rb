@@ -25,6 +25,10 @@ GET /orders/my_lecturer_list
 # 投顾报告
 GET /orders/my_invest_product
 
+# 购买页面
+lecturer_live_product_v2_1_1
+# 下单
+pay_order_upchina
 
 
 var mescroll0 = new MeScroll("mescroll0", {
