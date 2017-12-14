@@ -27,6 +27,10 @@ GET /orders/my_invest_product
 
 # 购买页面
 lecturer_live_product_v2_1_1
+# 风险评测 检测
+GET /orders/buy_now
+# 不评测 撤销下单
+GET /orders/cancel_buy_modal
 # 下单
 pay_order_upchina
 
