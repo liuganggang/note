@@ -37,6 +37,8 @@ pay_order_upchina
 # 讲师个人页
 get '/feeds_v2_1'
 
+pub_h5_v2备份分支 二期代码需要重新从production 开分支，把pub站代码重新提交一份。（pub二期发布的时候重新整理！）
+
 
 cat development.log| grep --context=3 '/auth_callbacks/forward' | less
 
