@@ -37,29 +37,8 @@ pay_order_upchina
 # 讲师个人页
 get '/feeds_v2_1'
 
-# BUG
-1.详情页 免责声明，返回不了√
-2. 首页下拉抖动
-3. 问股 关注登录 返回页面 最后返回不了√
-4. 登录注册XX清空输入√
-
-
 
 cat development.log| grep --context=3 '/auth_callbacks/forward' | less
-
-H5版二期任务：
-(1)首页VIPtab 及VIP列表（加锁/解锁/立即开通）
-(2)关注直播-VIP列表
-(3)我的-尊享服务（剔除申请退款、申请调换讲师）
-(4)风险承受能力测评（购买时逻辑+我的tab）
-(5)图文直播详情页的加锁、解锁、VIP消息展示、开通VIP功能
-(6)产品购买页
-(7)购买成功提示页
-(8)讲师个人主页增加VIP购买功能；
-
-
-
-
 
 var mescroll0 = new MeScroll("mescroll0", {
         down: {
