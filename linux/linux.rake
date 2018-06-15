@@ -83,10 +83,21 @@
   yum info packagename
 
 
+cat development.log| grep --context=3 '/auth_callbacks/forward' | less
 
 
+增加系统文件描述符的最大数量
 
+通过ulimit查看当前的文件描述符的最大数量：
 
+$ ulimit -n
+如果是1024，那是远远不够的，将下面4行添加到 /etc/security/limits.conf 中，重启机器。
+
+root soft nofile 65536
+root hard nofile 65536
+* soft nofile 65536
+* hard nofile 65536
+之后用ulimit查看，应该是65536了。
 
 
 

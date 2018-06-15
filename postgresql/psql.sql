@@ -95,8 +95,13 @@ DROP VIEW myview;
 
 
 
+# psql 10.5
 
+createdb liugang
 
+dropdb liugang
+
+psql liugang
 
 
 
