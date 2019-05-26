@@ -235,12 +235,6 @@ end
   #存储方式
   Rails.cache.read(:site => "mysite", :owners => [owner_1, owner_2])
 
-  未明白
-
-  if stale?(:last_modified => @product.updated_at.utc, :etag => @product)
-
-  fresh_when :last_modified => @product.published_at.utc, :etag => @product
-
 
   def smart_fetch(name, options = {}, &blk)
     in_cache = Rails.cache.fetch(name)

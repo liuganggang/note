@@ -99,8 +99,10 @@ root hard nofile 65536
 * hard nofile 65536
 之后用ulimit查看，应该是65536了。
 
-
-
+# 修改locale 添加zh-CN.UTF-8
+# 解决中文乱码
+sudo vim /etc/locale.gen
+sudo locale-gen
 
 
 
