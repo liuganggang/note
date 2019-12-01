@@ -52,6 +52,8 @@ p array.last(4)
 "a|delimited|string".scan("|")
 # Prints: ["|", "|"]
 
+aa.scan(/\"zh_CN.*?(?=})/)
+
 ["H", "A", "L"].collect {|x| x.succ } # => ["I", "B", "M"]
 
 [1,3,5,7].inject(:+) # => 16

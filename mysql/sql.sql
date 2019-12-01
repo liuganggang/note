@@ -1,3 +1,20 @@
+
+# 关联3张表查询排名
+SELECT id, ami.cname, ami.amount FROM
+(SELECT industries.cn as cname, sum(companies.recruit_info_num) as amount
+  FROM industries
+  INNER JOIN companies ON companies.industry_id = industries.id
+  WHERE (companies.recruit_info_num > 0)
+  GROUP BY industries.cn)
+ami join industries on ami.cname = industries.cn ORDER BY ami.amount desc
+
+
+# 查询jsob json中的channel='' 的数据
+SELECT * FROM users
+  WHERE users.created_at >= '2019-10-29 16:00:00' AND users.created_at < '2019-10-30 16:00:00'
+  AND jsonb_extract_path_text(users.sign_up_info_android, 'channel') = ''
+
+
 SELECT * FROM users LEFT JOIN (activity_ones) ON (activity_ones.user_id=users.id) where activity_ones.created_at between '2013-03-18 00:00:00'and '2013-03-19 23:59:59' group by user_id
 
 SELECT * FROM activity_ones LEFT OUTER JOIN (users) ON (users.id=activity_ones.user_id) where activity_ones.created_at between '2013-03-18 00:00:00'and '2013-03-19 23:59:59' group by activity_ones.user_id

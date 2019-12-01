@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+  <title>flex2</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <link rel="stylesheet" type="text/css" href="css/flex.css" />
+</head>
+<body>
+  <h1>Flex 布局示例</h1>
+
+  <p>
+    感谢阮一峰老师的教程
+    <a target="_blank" href="http://www.ruanyifeng.com/blog/2015/07/flex-grammar.html">http://www.ruanyifeng.com/blog/2015/07/flex-grammar.html</a>
+    <br>
+    本示例将教程上所有的布局都简单的实现了一遍，并保存GitHub上面
+    <br>
+    <a href="https://github.com/JailBreakC/flex-box-demo">https://github.com/JailBreakC/flex-box-demo</a>
+  </p>
+
+  <h2>容器的属性</h2>
+
+  <h3>1、flex-direction属性</h3>
+
+  <p>flex-direction属性决定主轴的方向（即项目的排列方向）。</p>
+  <p>.box { flex-direction: row | row-reverse | column | column-reverse; }</p>
+
+  <div class="box box-1">
+    <div class="box-item">1</div>
+    <div class="box-item">2</div>
+    <div class="box-item">3</div>
+    <div class="box-item">4</div>
+    <div class="box-item">5</div>
+    <div class="box-item">6</div>
+    <div class="box-item">7</div>
+    <div class="box-item">8</div>
+  </div>
+
+  <p>justify-content属性定义了项目在主轴上的对齐方式。</p>
+
+  <p>.box { justify-content: flex-start | flex-end | center | space-between | space-around; }</p>
+
+  <div class="box box-2">
+    <div class="box-item">1</div>
+    <div class="box-item">2</div>
+    <div class="box-item">3</div>
+    <div class="box-item">4</div>
+  </div>
+
+  <p>align-items属性定义项目在交叉轴上如何对齐。</p>
+
+  <p>.box { align-items: flex-start | flex-end | center | baseline | stretch; }</p>
+
+  <div class="box box-3">
+    <div class="box-item">1</div>
+    <div class="box-item item-tail">2</div>
+    <div class="box-item">3</div>
+    <div class="box-item item-tail">4</div>
+  </div>
+
+  <p>align-content属性定义了多根轴线（多行）的对齐方式。如果项目只有一根轴线，该属性不起作用。</p>
+  <p>.box { align-content: flex-start | flex-end | center | space-between | space-around | stretch; }</p>
+
+  <div class="box box-4">
+    <div class="box-item">1</div>
+    <div class="box-item">2</div>
+    <div class="box-item">3</div>
+    <div class="box-item">4</div>
+    <div class="box-item">5</div>
+    <div class="box-item">6</div>
+    <div class="box-item">7</div>
+    <div class="box-item">8</div>
+    <div class="box-item">9</div>
+  </div>
+
+  <p>flex-grow属性定义项目的放大比例，默认为0，即如果存在剩余空间，也不放大。</p>
+
+
+  <div class="box box-5">
+    <div class="box-item grow">1</div>
+    <div class="box-item grow grow-2">2</div>
+    <div class="box-item grow">3</div>
+  </div>
+
+  <p>flex-shrink属性定义了项目的缩小比例，默认为1，即如果空间不足，该项目将缩小。</p>
+
+
+   <div class="box box-6">
+    <div class="box-item shrink-0">1</div>
+    <div class="box-item">2</div>
+    <div class="box-item">3</div>
+  </div>
+
+  <p>flex属性是flex-grow, flex-shrink 和 flex-basis的简写，默认值为0 1 auto。后两个属性可选。</p>
+  <p>该属性有两个快捷值：auto (1 1 auto) 和 none (0 0 auto)。</p>
+
+  <div class="box box-7">
+    <div class="box-item">1</div>
+    <div class="box-item">2</div>
+    <div class="box-item">3</div>
+    <div class="box-item">4</div>
+  </div>
+
+</body>
+</html>

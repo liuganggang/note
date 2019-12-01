@@ -153,7 +153,7 @@ rake test:system
 # dev环境 开启/关闭缓存
 rails dev:cache
 
-
+ActiveRecord::Base.connection.execute("update industries set cls_cn_name = coalesce(industries.cn, industries.name);");
 
 
 

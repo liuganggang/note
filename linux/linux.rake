@@ -7,6 +7,11 @@
 
 	ls -l --time=atime production.log
 
+  ls -lR|grep "^-"| wc -l # 查询文件数量
+  ls -lR|grep "^d"| wc -l # 查询文件夹数量
+
+  ls -lR 201010*|grep "^-"| wc -l # 查询文件开头的数量
+
 	chattr -i file
 	chattr -a file
 
@@ -76,15 +81,20 @@
 
   find / -user liugang 2> /dev/null | grep Video
 
+  find /opt/db_backup -mtime +7 -delete # 超过7天的文件 删除掉
+
+# 全文搜索
+  grep login_method . -r
+  cat development.log| grep --context=3 '/auth_callbacks/forward' | less
+
 # yum
   yum install software
   yum uninstall software
   yum list (all | installed | recent | updates)
   yum info packagename
 
-
-cat development.log| grep --context=3 '/auth_callbacks/forward' | less
-
+# 临时在当前命令行修改数量
+ulimit -n 131072
 
 增加系统文件描述符的最大数量
 
@@ -105,11 +115,34 @@ sudo vim /etc/locale.gen
 sudo locale-gen
 
 
+# fail2ban 插件 做防火墙
+
+#查看 ID
+iptables -L -n -v --line-numbers
+# 解封 ID
+iptables -D f2b-ReqLimit 15
+
+# 手动 封
+iptables -I INPUT -s 222.186.180.6 -j DROP
+iptables -I INPUT -s 121.40.156.235 -j DROP
+
+iptables -I f2b-ReqLimit -s 183.193.120.45 -j DROP
+
+# 查看puma 进程变化
+watch -d 'ps aux --sort rss|grep puma'
+
+# 重启先 kill 进程
+RAILS_ENV=production bundle exec sidekiq -d -L log/sidekiq.log -C config/sidekiq.yml
+
+bundle exec pumactl start
+bundle exec pumactl stop
+bundle exec pumactl phased-restart
+bundle exec thin start -C
+bundle exec thin start -C config/thin.yml
 
 
-
-
-
+# redis 启动
+./src/redis-server redis.confg --daemonize yes
 
 
 

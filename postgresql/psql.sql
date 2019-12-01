@@ -73,7 +73,7 @@ pg_dump sales>/home/tk/pgsql/backup/1.bak
 pg_dump dbname | gzip > filename.gz
 
 #注：pg_dump可以对针对单表或者多表进行备份
-如：pg_dump databasename –t tablename1 –t tablename2 >filename
+如：pg_dump databasename -t tablename1 -t tablename2 > filename
 
 数据库的备份
 pg_dump -U liugang databasename -f /tmp/databasename.sql
@@ -104,9 +104,123 @@ dropdb liugang
 psql liugang
 
 
+# psql 11
+
+$ createdb lifanli
+
+$ dropdb lifanli
+
+$ psql lifanli
+
+SELECT version();
+
+SELECT current_date;
+
+SELECT 2 + 2 AS counter;
+
+CREATE TABLE weather (
+    city            varchar(80),
+    temp_lo         int,           -- low temperature
+    temp_hi         int,           -- high temperature
+    prcp            real,          -- precipitation
+    date            date
+);
+
+CREATE TABLE cities (
+    name            varchar(80),
+    location        point
+);
+
+DROP TABLE tablename;
+
+INSERT INTO weather VALUES ('San Francisco', 46, 50, 0.25, '1994-11-27');
+
+INSERT INTO cities VALUES ('San Francisco', '(-194.0, 53.0)');
 
 
+INSERT INTO weather (city, temp_lo, temp_hi, prcp, date)
+    VALUES ('San Francisco', 43, 57, 0.0, '1994-11-29');
 
+INSERT INTO weather (date, city, temp_hi, temp_lo)
+    VALUES ('1994-11-29', 'Hayward', 54, 37);
+
+COPY weather FROM '/home/user/weather.txt';
+
+SELECT * FROM weather;
+
+SELECT city, (temp_hi+temp_lo)/2 AS temp_avg, date FROM weather;
+
+SELECT * FROM weather
+    WHERE city = 'San Francisco' AND prcp > 0.0;
+
+SELECT * FROM weather
+    ORDER BY city;
+
+SELECT DISTINCT city
+    FROM weather
+    ORDER BY city;
+
+SELECT *
+    FROM weather INNER JOIN cities ON (weather.city = cities.name);
+
+SELECT W1.city, W1.temp_lo AS low, W1.temp_hi AS high,
+    W2.city, W2.temp_lo AS low, W2.temp_hi AS high
+    FROM weather W1, weather W2
+    WHERE W1.temp_lo < W2.temp_lo
+    AND W1.temp_hi > W2.temp_hi;
+
+SELECT max(temp_lo) FROM weather;
+
+SELECT city FROM weather
+    WHERE temp_lo = (SELECT max(temp_lo) FROM weather);
+
+SELECT city, max(temp_lo)
+    FROM weather
+    GROUP BY city
+    HAVING max(temp_lo) < 40;
+
+UPDATE weather
+    SET temp_hi = temp_hi - 2,  temp_lo = temp_lo - 2
+    WHERE date > '1994-11-28';
+
+DELETE FROM weather WHERE city = 'Hayward';
+
+# 删除所有rows
+DELETE FROM tablename;
+
+# transactions
+BEGIN;
+UPDATE accounts SET balance = balance - 100.00
+    WHERE name = 'Alice';
+-- etc etc
+COMMIT;
+
+
+# 排名
+SELECT depname, empno, salary, avg(salary) OVER (PARTITION BY depname) FROM empsalary;
+
+SELECT depname, empno, salary,
+       rank() OVER (PARTITION BY depname ORDER BY salary DESC)
+FROM empsalary;
+
+
+CREATE TABLE cities (
+  name       text,
+  population real,
+  altitude   int     -- (in ft)
+);
+
+CREATE TABLE capitals (
+  state      char(2)
+) INHERITS (cities);
+
+SELECT name, altitude
+  FROM cities
+  WHERE altitude > 500;
+
+SELECT name, altitude
+    FROM ONLY cities
+    WHERE altitude > 500;
 
 
 

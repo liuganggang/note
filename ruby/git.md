@@ -10,6 +10,8 @@ git show v1.0.0
 git push origin v1.5     =>提交单个标签上去
 
 git push origin --tags  => 提交所有标签上去
+
+git rm --cached config/secret.yml.example
 ```
 
 ```
