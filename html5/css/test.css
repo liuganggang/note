@@ -1,0 +1,84 @@
+/*title 添加点划线*/
+abbr[title] {
+  border-bottom: 1px dotted #999;
+}
+
+abbr[title]:hover {
+  cursor: help;
+}
+
+
+input[type="submit"] {
+  cursor: pointer;
+}
+
+a[href^="http:"] {
+
+}
+
+img[src$=".jpg"] {
+
+}
+
+/*包含about的链接*/
+a[href*="/about/"] {
+  color: red;
+}
+
+/*伪元素添加*/
+.chapter::before {
+  content: '] ';
+  font-size: 15em;
+}
+
+.chapter p::first-letter {
+  float: left;
+  font-size: 3em;
+}
+
+.chapter p::first-line {
+  text-transform: uppercase;
+}
+
+/*按照顺序使用*/
+a:link, a:visited, a:hover, a:focus, a:active
+
+/*url访问锚点 高亮*/
+.comment:target {
+  background-color: #000;
+}
+
+.comment:target:not(.comment-downvoted) {
+  background-color: #fff;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
