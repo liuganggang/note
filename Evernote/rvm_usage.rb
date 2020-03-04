@@ -4,6 +4,11 @@ rvm list known
 rvm install 1.9.3
 # 这里安装了最新的1.9.3, rvm list known列表里面的都可以拿来安装。
 
+# download ruby-2.6.5.tar.bz2 
+# mv to .rvm/archives
+# then install form local file
+rvm --verify-downloads 2 --disable-binary install ruby-2.6.5
+
 # 使用一个ruby版本
 rvm use 1.9.3
 # 如果想设置为默认版本，可以这样

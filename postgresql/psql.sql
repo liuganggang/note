@@ -105,6 +105,16 @@ psql liugang
 
 
 # psql 11
+# use superuser to create a user
+su - postgres
+
+createuser liugang -d
+
+# set lgg's password
+psql
+\password lgg;
+
+
 
 $ createdb lifanli
 
