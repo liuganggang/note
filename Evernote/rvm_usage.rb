@@ -4,7 +4,7 @@ rvm list known
 rvm install 1.9.3
 # 这里安装了最新的1.9.3, rvm list known列表里面的都可以拿来安装。
 
-# download ruby-2.6.5.tar.bz2 
+# download ruby-2.6.5.tar.bz2
 # mv to .rvm/archives
 # then install form local file
 rvm --verify-downloads 2 --disable-binary install ruby-2.6.5
@@ -42,8 +42,9 @@ gem install bundler
 
 rvm get stable
 
-
-
+# 低版本ruby不兼容高版本rubygems 使用 rvm rubygems 安装低版本的才能使用
+ruby 2.3.8
+rvm rubygems 3.0.2 --force
 
 
 
