@@ -1,6 +1,18 @@
 package main
 
-import "fmt"
+import (
+  "fmt"
+  "strings"
+  "strconv"
+)
+
+type Celsius float64
+
+const (
+  AbsoluteZeroC Celsius = -273.15
+  FreezingC Celsius = 0
+  BoilingC Celsius = 100
+)
 
 func main() {
   fmt.Printf("hello world\n")
@@ -28,6 +40,28 @@ func main() {
   fmt.Println(fib(23))
   names := []string{"gold", "silver", "bronze"}
   fmt.Println(names)
+
+  fmt.Println(float64(1.6))
+
+  fmt.Println(AbsoluteZeroC)
+
+  s := "hello world!"
+  fmt.Println(s[1:7], "\a")
+
+  str := strings.Join(names, ",")
+
+  fmt.Println(str)
+  fmt.Println(strings.Count(str, ","))
+
+  x := 3
+  y := fmt.Sprintf("%d", x)
+  fmt.Println(y, strconv.Itoa(x))
+
+  r, err := strconv.Atoi("123")
+  if err == nil {
+    fmt.Println(r)
+  }
+
 }
 
 
