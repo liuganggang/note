@@ -99,6 +99,10 @@ curl 'localhost:9200/accounts/person/_search' -H 'Content-Type:application/json'
 }'
 
 
+# 插件安装
+elasticsearch-plugin list
+
+
 
 
 
