@@ -6,3 +6,7 @@ sql_file=/opt/db_backup/db_production-$(date "+%Y_%m_%d_%H_%M_%S").sql
 pg_dump --username=postgres --dbname=db_production --host=localhost > $sql_file
 zip ${sql_file}.zip $sql_file
 /bin/rm $sql_file
+
+
+mysqldump -uroot -p database --tables table --where="id > 10" > table.sql
+
