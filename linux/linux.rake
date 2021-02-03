@@ -114,6 +114,8 @@ root hard nofile 65536
 sudo vim /etc/locale.gen
 sudo locale-gen
 
+sudo apt-get install language-pack-zh-hans
+
 
 # fail2ban 插件 做防火墙
 
