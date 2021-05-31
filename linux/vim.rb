@@ -1,6 +1,6 @@
 # 批量注释
-shift + v 全选, 快速 ",cb"
+contrl + v 批量选中， shift + i 首行输入# ，按2次ESC 批量注释。
 
 # 解除注释
-shift + v 全选,
-:s/#/  替换掉
+contrl + v 批量选中， shift + i 首行输入模式，按d 删除
+
