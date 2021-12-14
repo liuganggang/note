@@ -46,7 +46,15 @@ rvm get stable
 ruby 2.3.8
 rvm rubygems 3.0.2 --force
 
+# gpg install on mac
+GPG signature verification failed for '/Users/huabei-ruby/.rvm/archives/rvm-1.29.12.tgz' - 'https://github.com/rvm/rvm/releases/download/1.29.12/1.29.12.tar.gz.asc'! Try to install GPG v2 and then fetch the public key:
 
+    gpg --keyserver hkp://pool.sks-keyservers.net --recv-keys 409B6B1796C275462A1703113804BB82D39DC0E3 7D2BAF1CF37B13E2069D6956105BD0E739499BDB
+
+or if it fails:
+
+    command curl -sSL https://rvm.io/mpapis.asc | gpg --import -
+    command curl -sSL https://rvm.io/pkuczynski.asc | gpg --import -
 
 
 

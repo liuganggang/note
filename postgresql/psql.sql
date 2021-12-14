@@ -46,7 +46,7 @@ psql exampledb < exampledb.sql
 # 创建新表
 CREATE TABLE user_tbl(name VARCHAR(20), signup_date DATE);
 # 插入数据
-INSERT INTO user_tbl(name, signup_date) VALUES('张三', '2013-12-22');
+INSERT INTO schema_migrations(version) VALUES('20211012113342');
 # 选择记录
 SELECT * FROM user_tbl;
 # 更新数据
@@ -236,7 +236,21 @@ SELECT name, altitude
 
 
 
+开放psql 远程访问。
+ 1.修改pg_hba.conf文件
+# IPv4 local connections:
+host  all    all    192.168.1.0/24    trust
+ 
 
+2.修改postgresql.conf文件，将数据库服务器的监听模式修改为监听所有主机发出的连接请求。
+
+listen_addresses='*'
+
+
+
+
+CREATE EXTENSION cube;
+CREATE EXTENSION earthdistance;
 
 
 
