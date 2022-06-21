@@ -87,8 +87,14 @@ go env -w GOBIN=/Users/liugang/go/bin
 go install
 
 
+# type
 
+type Page struct {
+  Title string
+  Body []byte
+}
 
+# net/http
 
 
 

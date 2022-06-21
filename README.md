@@ -1,10 +1,12 @@
-## my note for learn life
+## My note for learn life
 
 ```
-use Ctrl + Shift + f, Find in Folder.
-search any keyword, such as "git"
+Editor: sublime text.
 
-find my note very quickly.
+1. Using Ctrl + Shift + f, Find in Folder.
+2. Search any keyword, such as "git".
+
+Find my note very quickly.
 
 ```
 
