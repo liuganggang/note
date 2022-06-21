@@ -157,8 +157,12 @@ config：在运行时配置Redis服务器
 
 
 
+# 开启远程访问
+1、将 bind 127.0.0.1 ::1 这一行注释掉。
 
-
+2、将 protected-mode 要设置成no （默认是设置成yes的， 防止了远程访问，在redis3.2.3版本后）
+3、设置远程连接密码
+取消注释 requirepass foobared
 
 
 
