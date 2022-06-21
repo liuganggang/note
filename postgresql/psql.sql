@@ -253,6 +253,20 @@ CREATE EXTENSION cube;
 CREATE EXTENSION earthdistance;
 
 
+# 创建用户 创建数据库
+
+createuser -s test
+
+create database test_db owner test;
+
+GRANT ALL PRIVILEGES ON DATABASE test_db to test;
+
+
+
+
+
+
+
 
 
 
