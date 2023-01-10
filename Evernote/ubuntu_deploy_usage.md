@@ -83,7 +83,7 @@ $ ruby -v
 ```
 gem sources                        # 查看gem源
 gem sources -r https://rubygems.org/     # 删除默认的gem源
-gem sources -a https://ruby.taobao.org/   # 增加taobao作为gem源
+gem sources -a https://gems.ruby-china.com/   # 增加taobao作为gem源
 gem sources   ​​       # 再次查看gem源
 http://ruby.taobao.org                # 查看结果请确保只有 ruby.taobao.org
 
