@@ -9,3 +9,8 @@ brew switch mysql 5.5.29
 brew list -1 | while read line; do brew unlink $line; brew link $line; done
 
 
+brew install ffmpeg
+
+ffmpeg -i input.mov -c copy output.mp4    
+
+
