@@ -103,8 +103,8 @@ rvm use 2.0.0@rails4_1_7 --create --default
 ```
 gem sources                        # 查看gem源
 gem sources -r https://rubygems.org/     # 删除默认的gem源
-gem sources -a https://ruby.taobao.org/   # 增加taobao作为gem源
-gem sources --add https://ruby.taobao.org/ --remove https://rubygems.org/
+gem sources -a https://gems.ruby-china.com/   # 增加taobao作为gem源
+gem sources --add https://gems.ruby-china.com/ --remove https://rubygems.org/
 
 打开 ~/.gemrc
 在最后加入 gem: --no-ri --no-rdoc
