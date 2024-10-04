@@ -17,11 +17,12 @@ nvm alias default v15.2.0
 
 通过修改hosts解决此问题
 199.232.96.133 raw.githubusercontent.com
-
-
+185.199.110.133 raw.githubusercontent.com
 
 npm install --global yarn
 
+
+Autel MaxiIM KM100
 
 
 https://developer.aliyun.com/mirror/NPM?from=tnpm

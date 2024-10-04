@@ -115,7 +115,7 @@ gem sources -u                     # 更新源缓存，可以不执行
 如果你使用 Gemfile 和 Bundle (例如：Rails 项目)
 你可以用 Bundler 的 Gem 源代码镜像命令。
 
-bundle config mirror.https://rubygems.org https://ruby.taobao.org
+bundle config set --global mirror.https://rubygems.org https://gems.ruby-china.com
 这样你不用改你的 Gemfile 的 source。
 
 ```
